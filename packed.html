@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <meta name="author" content="(ou comment faire les choses plus tard peut être une bonne idée)" />
+  <title>L'évaluation paresseuse</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css,html%20%7B%20background%2Dcolor%3A%20%23AAA%3B%20%7D%0Abody%20%7B%20background%2Dcolor%3A%20white%3B%20border%2Dradius%3A%2012px%7D%0A%2F%2A%20A%20section%20is%20a%20slide%2E%20It%27s%20size%20is%20800x600%2C%20and%20this%20will%20never%20change%20%2A%2F%0Asection%20%7B%0A%09font%2Dfamily%3A%20Arial%2C%20serif%3B%0A%09font%2Dsize%3A%2020pt%3B%0A%7D%0Aaddress%2C%20blockquote%2C%20dl%2C%20fieldset%2C%20form%2C%20h1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%2C%20hr%2C%20ol%2C%20p%2C%20pre%2C%20table%2C%20ul%2C%20dl%20%7B%20padding%3A%2010px%2020px%2010px%2020px%3B%20%7D%0Ah1%2C%20h2%2C%20h3%20%7B%0A%09text%2Dalign%3A%20center%3B%0A%09margin%3A%2010pt%2010pt%2020pt%2010pt%3B%0A%7D%0Aul%2C%20ol%20%7B%0A%09margin%3A%2010px%2010px%2010px%2050px%3B%0A%7D%0Asection%2Etitleslide%20h1%20%7B%20margin%2Dtop%3A%20200px%3B%20%7D%0Ah1%2Etitle%20%7B%20margin%2Dtop%3A%20150px%3B%20%7D%0Ah1%20%7B%20font%2Dsize%3A%20180%25%3B%20%7D%0Ah2%20%7B%20font%2Dsize%3A%20120%25%3B%20%7D%0Ah3%20%7B%20font%2Dsize%3A%20100%25%3B%20%7D%0Aq%20%7B%20quotes%3A%20%22%E2%80%9C%22%20%22%E2%80%9D%22%20%22%E2%80%98%22%20%22%E2%80%99%22%3B%20%7D%0Ablockquote%20%7B%20font%2Dstyle%3A%20italic%20%7D%0A%2F%2A%20Figures%20are%20displayed%20full%2Dpage%2C%20with%20the%20caption%20on%0A%09%20top%20of%20the%20image%2Fvideo%20%2A%2F%0Afigure%20%7B%0A%09background%2Dcolor%3A%20black%3B%0A%7D%0Afigcaption%20%7B%0A%09margin%3A%2070px%3B%0A%7D%0Afooter%20%7B%0A%09position%3A%20absolute%3B%0A%09bottom%3A%200%3B%0A%09width%3A%20100%25%3B%0A%09padding%3A%2040px%3B%0A%09text%2Dalign%3A%20right%3B%0A%09background%2Dcolor%3A%20%23F3F4F8%3B%0A%09border%2Dtop%3A%201px%20solid%20%23CCC%3B%0A%7D%0A%0A%2F%2A%20Transition%20effect%20%2A%2F%0A%2F%2A%20Feel%20free%20to%20change%20the%20transition%20effect%20for%20original%0A%09%20animations%2E%20See%20here%3A%0A%09%20https%3A%2F%2Fdeveloper%2Emozilla%2Eorg%2Fen%2FCSS%2FCSS%5Ftransitions%0A%09%20How%20to%20use%20CSS3%20Transitions%3A%20%2A%2F%0Asection%20%7B%0A%09%2Dmoz%2Dtransition%3A%20left%20400ms%20linear%200s%3B%0A%09%2Dwebkit%2Dtransition%3A%20left%20400ms%20linear%200s%3B%0A%09%2Dms%2Dtransition%3A%20left%20400ms%20linear%200s%3B%0A%09transition%3A%20left%20400ms%20linear%200s%3B%0A%7D%0A%0A%2F%2A%20Before%20%2A%2F%0Asection%20%7B%20left%3A%20%2D150%25%3B%20%7D%0A%2F%2A%20Now%20%2A%2F%0Asection%5Baria%2Dselected%5D%20%7B%20left%3A%200%3B%20%7D%0A%2F%2A%20After%20%2A%2F%0Asection%5Baria%2Dselected%5D%20%7E%20section%20%7B%20left%3A%20%2B150%25%3B%20%7D%0A%0A%2F%2A%20Incremental%20elements%20%2A%2F%0A%0A%2F%2A%20By%20default%2C%20visible%20%2A%2F%0A%2Eincremental%20%3E%20%2A%20%7B%20opacity%3A%201%3B%20%7D%0A%0A%2F%2A%20The%20current%20item%20%2A%2F%0A%2F%2A%20%2Eincremental%20%3E%20%2A%5Baria%2Dselected%5D%20%7B%20color%3A%20red%3B%20opacity%3A%201%3B%20%7D%20%2A%2F%0A%0A%2F%2A%20The%20items%20to%2Dbe%2Dselected%20%2A%2F%0A%2F%2A%20%2Eincremental%20%3E%20%2A%5Baria%2Dselected%5D%20%7E%20%2A%20%7B%20opacity%3A%200%2E2%3B%20%7D%20%2A%2F%0A%0Atable%20%7B%0A%09width%3A%2099%25%3B%0A%09margin%2Dleft%3A%20auto%3B%0A%09margin%2Dright%3A%20auto%3B%0A%09border%2Dcollapse%3A%20collapse%3B%0A%7D%0Ath%2C%20td%20%7B%0A%09padding%3A%205px%3B%0A%09font%2Dsize%3A%2085%25%3B%0A%09border%3A%201px%20solid%20black%3B%0A%7D%0A%2Emath%20%7B%0A%09font%2Dfamily%3A%20serif%3B%0A%7D%0A%0A%2F%2A%20Slides%20numbering%20%2A%2F%0Abody%20%7B%20counter%2Dreset%3A%20slideidx%3B%20%7D%0Asection%3Abefore%20%7B%0A%09counter%2Dincrement%3A%20slideidx%3B%0A%09content%3A%20counter%28slideidx%29%3B%0A%09position%3A%20absolute%3B%0A%09bottom%3A%205px%3B%0A%09right%3A%2015px%3B%0A%09padding%3A%202px%2010px%3B%0A%09background%3A%20rgba%28255%2C%20255%2C%20255%2C%20%2E7%29%3B%0A%09border%2Dradius%3A%205px%3B%0A%09font%2Dweight%3A%20bold%3B%0A%09font%2Dsize%3A%2025px%3B%0A%7D%0A" rel="stylesheet" />
+</head>
+<body>
+<section class="title">
+  <h1 class="title">L'évaluation paresseuse</h1>
+  <h2 class="author">(ou comment faire les choses plus tard peut être une bonne idée)</h2>
+  <h3 class="date">David Sferruzza</h3>
+</section>
+<section id="à-propos-de-moi" class="slide level1">
+<h1>À propos de moi</h1>
+<ul>
+<li><a href="https://twitter.com/d_sferruzza">@d_sferruzza</a></li>
+<li><a href="https://github.com/dsferruzza">github.com/dsferruzza</a></li>
+<li>développeur et responsable R&amp;D chez <a href="http://www.escaledigitale.com">Escale</a></li>
+<li>écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 1 an</li>
+</ul>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions ?</h1>
+<div style="text-align:center">
+IMG
+</div>
+<div style="text-align:center">
+<p>Twitter : @d_sferruzza</p>
+<p>Slides sur GitHub :</p>
+<p><a href="http://github.com/dsferruzza/talk-evaluation-paresseuse-en-js">dsferruzza/talk-evaluation-paresseuse-en-js</a></p>
+</div>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<div id="progress-bar"></div>
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  details { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  body { display: none; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+  #progress-bar{
+    bottom: 0;
+    position: absolute;
+    -moz-transition: width 400ms linear 0s;
+    -webkit-transition: width 400ms linear 0s;
+    -ms-transition: width 400ms linear 0s;
+    transition: width 400ms linear 0s;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+  }
+  figure > * {
+    position: absolute;
+  }
+  figure > img, figure > video {
+    width: 100%; height: 100%;
+  }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    slides: null,
+    progressBar : null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = $$("body > section");
+    this.progressBar = $("#progress-bar");
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+  }
+  
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  // Specific params handling
+    if (!+this.params.autoplay)
+      $$.forEach($$("video"), function(v){ v.controls = true });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+    if (aEvent.keyCode == 70) { // f
+      aEvent.preventDefault();
+      this.goFullscreen();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getDetails = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("details");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getDetails(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    this.setProgress(newidx, newstep);
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = $$('.incremental');
+    if (this.step <= 0) {
+      $$.forEach(incrementals, function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      $$.forEach(incrementals, function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+
+  Dz.goFullscreen = function() {
+    var html = $('html'),
+        requestFullscreen = html.requestFullscreen || html.requestFullScreen || html.mozRequestFullScreen || html.webkitRequestFullScreen;
+    if (requestFullscreen) {
+      requestFullscreen.apply(html);
+    }
+  }
+  
+  Dz.setProgress = function(aIdx, aStep) {
+    var slide = $("section:nth-of-type("+ aIdx +")");
+    if (!slide)
+      return;
+    var steps = slide.$$('.incremental > *').length + 1,
+        slideSize = 100 / (this.slides.length - 1),
+        stepSize = slideSize / steps;
+    this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+  
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  $$.forEach = function(nodeList, fun) {
+    Array.prototype.forEach.call(nodeList, fun);
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>
