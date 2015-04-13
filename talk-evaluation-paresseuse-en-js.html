@@ -21,10 +21,68 @@
 <li>écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 1 an</li>
 </ul>
 </section>
+<section id="évaluation-paresseuse" class="slide level1">
+<h1>Évaluation paresseuse !=</h1>
+<div style="text-align:center">
+<img src="img/stairs.gif" alt="" width="800">
+</div>
+<p>Learn the difference, it could save your life</p>
+</section>
+<section id="stratégie-dévaluation" class="slide level1">
+<h1>Stratégie d'évaluation</h1>
+<ul>
+<li><strong>quand</strong> évaluer les arguments d'un appel de fonction</li>
+<li><strong>quel type de valeur</strong> passer à la fonction</li>
+</ul>
+<div style="text-align:center">
+<img src="img/bean.gif" alt="" width="600">
+</div>
+</section>
+<section id="évaluation-stricte" class="slide level1">
+<h1>Évaluation stricte</h1>
+<p><em>strict evaluation, eager evaluation, greedy evaluation</em></p>
+<ul>
+<li><strong>quand :</strong> dès que l'expression peut être liée à une variable</li>
+<li><strong>quel type de valeurs :</strong>
+<ul>
+<li><em>call by value</em></li>
+<li><em>call by reference</em></li>
+<li><em>call by sharing</em></li>
+<li>...</li>
+</ul></li>
+</ul>
+</section>
+<section id="évaluation-non-stricte" class="slide level1">
+<h1>Évaluation non stricte</h1>
+<p><em>non-strict evaluation, lazy evaluation</em></p>
+<ul>
+<li><strong>call by name :</strong> les arguments sont substitués dans le corps de la fonction</li>
+<li><strong>call by need :</strong> idem, avec <em>mémoïsation</em> (≈ mise en cache du résultat de l'évaluation des arguments)</li>
+<li>...</li>
+</ul>
+</section>
+<section id="évaluation-paresseuse-1" class="slide level1">
+<h1>Évaluation paresseuse</h1>
+<p>L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bout de code ne soient réellement nécessaires.</p>
+<div style="text-align:center">
+<img src="img/clean.gif" alt="" width="515">
+</div>
+</section>
+<section id="pourquoi-cest-bien" class="slide level1">
+<h1>Pourquoi c'est bien ?</h1>
+<ul>
+<li><strong>optimisation :</strong> on veut éviter les calculs inutiles</li>
+<li><strong>maintenabilité :</strong>
+<ul>
+<li>on peut exprimer des structures de données infinies</li>
+<li>on peut définir des structures de contrôle comme des abstractions au lieu de primitives</li>
+</ul></li>
+</ul>
+</section>
 <section id="questions" class="slide level1">
 <h1>Questions ?</h1>
 <div style="text-align:center">
-IMG
+<img src="img/fat.gif" />
 </div>
 <div style="text-align:center">
 <p>Twitter : @d_sferruzza</p>
