@@ -4,6 +4,25 @@
   <meta name="author" content="(ou comment faire les choses plus tard peut être une bonne idée)" />
   <title>L'évaluation paresseuse</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -20,6 +39,9 @@
 <li>développeur et responsable R&amp;D chez <a href="http://www.escaledigitale.com">Escale</a></li>
 <li>écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 1 an</li>
 </ul>
+<div style="text-align:center">
+<img src="img/escale.png" alt="">
+</div>
 </section>
 <section id="évaluation-paresseuse" class="slide level1">
 <h1>Évaluation paresseuse !=</h1>
@@ -68,15 +90,121 @@
 <img src="img/clean.gif" alt="" width="515">
 </div>
 </section>
-<section id="pourquoi-cest-bien" class="slide level1">
-<h1>Pourquoi c'est bien ?</h1>
+<section id="à-quoi-ça-sert" class="slide level1">
+<h1>À quoi ça sert ?</h1>
 <ul>
-<li><strong>optimisation :</strong> on veut éviter les calculs inutiles</li>
+<li><strong>optimisation :</strong> on peut éviter des calculs inutiles</li>
 <li><strong>maintenabilité :</strong>
 <ul>
 <li>on peut exprimer des structures de données infinies</li>
 <li>on peut définir des structures de contrôle comme des abstractions au lieu de primitives</li>
 </ul></li>
+</ul>
+</section>
+<section id="lo-dash" class="slide level1">
+<h1>Lo-Dash</h1>
+<blockquote>
+<p>A JavaScript utility library delivering consistency, modularity, performance, &amp; extras.</p>
+</blockquote>
+<div style="text-align:center">
+<a href="https://lodash.com/" class="uri">https://lodash.com/</a>
+</div>
+<ul>
+<li>bibliothèque JS qui permet (notamment) de manipuler les collections</li>
+<li><em>lazy</em> depuis la v3</li>
+</ul>
+</section>
+<section id="exemple" class="slide level1">
+<h1>Exemple</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> t = [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>];
+
+<span class="kw">function</span> <span class="fu">plusUn</span>(nb) {
+    <span class="ot">console</span>.<span class="fu">log</span>(nb + <span class="st">&#39; + 1&#39;</span>);
+    <span class="kw">if</span> (nb &gt; <span class="dv">2</span>) <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;Traitement long&#39;</span>);
+    <span class="kw">return</span> nb + <span class="dv">1</span>;
+}
+
+<span class="kw">function</span> <span class="fu">petit</span>(nb) {
+    <span class="ot">console</span>.<span class="fu">log</span>(nb + <span class="st">&#39; plus petit que 3 ?&#39;</span>);
+    <span class="kw">return</span> nb &lt; <span class="dv">3</span>;
+}</code></pre>
+</section>
+<section id="sans-lo-dash" class="slide level1">
+<h1>Sans Lo-Dash</h1>
+<div style="float: right; margin-right: 100px;">
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> js = t
+        .<span class="fu">map</span>(plusUn)
+        .<span class="fu">filter</span>(petit)
+        .<span class="fu">slice</span>(<span class="dv">0</span>, <span class="dv">2</span>);</code></pre>
+</div>
+<pre><code>0 + 1
+1 + 1
+2 + 1
+3 + 1
+Traitement long
+4 + 1
+Traitement long
+1 plus petit que 3 ?
+2 plus petit que 3 ?
+3 plus petit que 3 ?
+4 plus petit que 3 ?
+5 plus petit que 3 ?
+[ 1, 2 ]</code></pre>
+</section>
+<section id="sans-lo-dash-1" class="slide level1">
+<h1>Sans Lo-Dash</h1>
+<div style="text-align:center">
+<img src="img/without-lodash.gif" alt="" width="690">
+</div>
+</section>
+<section id="avec-lo-dash" class="slide level1">
+<h1>Avec Lo-Dash</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> _ = <span class="fu">require</span>(<span class="st">&#39;lodash&#39;</span>);
+<span class="kw">var</span> lodash = <span class="fu">_</span>(t)
+        .<span class="fu">map</span>(plusUn)
+        .<span class="fu">filter</span>(petit)
+        .<span class="fu">take</span>(<span class="dv">2</span>)
+        .<span class="fu">value</span>();</code></pre>
+<pre><code>0 + 1
+1 plus petit que 3 ?
+1 + 1
+2 plus petit que 3 ?
+[ 1, 2 ]</code></pre>
+</section>
+<section id="avec-lo-dash-1" class="slide level1">
+<h1>Avec Lo-Dash</h1>
+<div style="text-align:center">
+<img src="img/with-lodash.gif" alt="" width="690">
+</div>
+</section>
+<section id="conclusion" class="slide level1">
+<h1>Conclusion</h1>
+<div style="text-align:center">
+<img src="img/cat.gif" alt="" width="800">
+</div>
+<p>Nope</p>
+</section>
+<section id="conclusion-1" class="slide level1">
+<h1>Conclusion</h1>
+<ul>
+<li>séparation
+<ul>
+<li>du Calcul, de la <strong>génération</strong><br><em>→ où le calcul d'une valeur est-il défini ?</em></li>
+<li>du Contrôle, de la <strong>condition d'arrêt</strong><br><em>→ où le calcul d'une valeur se produit-il ?</em></li>
+</ul></li>
+<li><em>colle</em> qui permet d'assembler efficacement des (bouts de) programmes : facilite l'approche <em>diviser pour régner</em></li>
+</ul>
+<p><strong>Avantages :</strong> peut augmenter la maintenabilité <em>et</em> les performances</p>
+<p><strong>Inconvénients :</strong> peut introduire de l'<em>overhead</em> (dépend pas mal de la techno)</p>
+</section>
+<section id="ressources" class="slide level1">
+<h1>Ressources</h1>
+<ul>
+<li><a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a> : pourquoi les fonctions d'ordre supérieur et l'évaluation paresseuse sont parmi les meilleurs outils pour écrire des programmes modulaires</li>
+<li><a href="http://www.infoq.com/interviews/john-hughes-fp">John Hughes on Why Functional Programming Matters!</a></li>
+<li><a href="https://lodash.com/">Lo-Dash</a></li>
+<li><a href="http://filimanjaro.com/blog/2014/introducing-lazy-evaluation/">How to Speed Up Lo-Dash ×100? Introducing Lazy Evaluation</a> : annonce/exemple de l'évaluation paresseuse dans Lo-Dash</li>
+<li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy">Evaluation strategy sur Wikipédia</a> : explications détaillées des stratégies d'évaluation les plus courantes</li>
 </ul>
 </section>
 <section id="questions" class="slide level1">
