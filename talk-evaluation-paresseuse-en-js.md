@@ -61,7 +61,7 @@ L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bou
 - **optimisation :** on peut éviter des calculs inutiles
 - **maintenabilité :**
 	- on peut exprimer des structures de données infinies
-	- on peut définir des structures de contrôle comme des abstractions au lieu de primitives
+	- on peut définir des structures de contrôle comme des abstractions, au lieu de primitives
 
 
 # Lo-Dash
@@ -154,7 +154,7 @@ var lodash = _(t)
 
 <div style="text-align:center"><img src="img/cat.gif" alt="" width="800"></div>
 
-Nope
+Still not that kind of lazy
 
 
 # Conclusion
