@@ -10,12 +10,12 @@
 - doctorant en génie logiciel à l'Université de Nantes
 - écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 2 an
 
-<div style="text-align:center"><img src="img/escale.png" alt=""></div>
+![](img/escale.png)
 
 
 # Évaluation paresseuse !=
 
-<div style="text-align:center"><img src="img/stairs.gif" alt="" width="800"></div>
+<figure><img src="img/stairs.gif" alt="" width="800"></figure>
 
 Learn the difference, it could save your life
 
@@ -25,7 +25,7 @@ Learn the difference, it could save your life
 - **quand** évaluer les arguments d'un appel de fonction
 - **quel type de valeur** passer à la fonction
 
-<div style="text-align:center"><img src="img/bean.gif" alt="" width="600"></div>
+<figure><img src="img/bean.gif" alt="" width="600"></figure>
 
 
 # Évaluation stricte
@@ -53,7 +53,7 @@ Learn the difference, it could save your life
 
 L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bout de code ne soient réellement nécessaires.
 
-<div style="text-align:center"><img src="img/clean.gif" alt="" width="515"></div>
+<figure><img src="img/clean.gif" alt="" width="515"></figure>
 
 
 # À quoi ça sert ?
@@ -68,7 +68,7 @@ L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bou
 
 > A JavaScript utility library delivering consistency, modularity, performance, & extras.
 
-<div style="text-align:center"><https://lodash.com/></div>
+<https://lodash.com/>
 
 - bibliothèque JS qui permet (notamment) de manipuler les collections
 - *lazy* depuis la v3
@@ -122,7 +122,7 @@ Traitement long
 
 # Sans Lo-Dash
 
-<div style="text-align:center"><img src="img/without-lodash.gif" alt="" width="690"></div>
+<figure><img src="img/without-lodash.gif" alt="" width="690"></figure>
 
 
 # Avec Lo-Dash
@@ -147,12 +147,12 @@ var lodash = _(t)
 
 # Avec Lo-Dash
 
-<div style="text-align:center"><img src="img/with-lodash.gif" alt="" width="690"></div>
+<figure><img src="img/with-lodash.gif" alt="" width="690"></figure>
 
 
 # Conclusion
 
-<div style="text-align:center"><img src="img/cat.gif" alt="" width="800"></div>
+<figure><img src="img/cat.gif" alt="" width="800"></figure>
 
 Still not that kind of lazy
 
@@ -180,12 +180,10 @@ Still not that kind of lazy
 
 # Questions ?
 
-<div style="text-align:center">![](img/fat.gif)</div>
+![](img/fat.gif)
 
-<div style="text-align:center">
 Twitter : \@d_sferruzza
 
 Slides sur GitHub :
 
 [dsferruzza/talk-evaluation-paresseuse-en-js](http://github.com/dsferruzza/talk-evaluation-paresseuse-en-js)
-</div>
