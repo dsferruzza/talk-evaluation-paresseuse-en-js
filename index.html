@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="(ou comment faire les choses plus tard peut être une bonne idée)" />
+  <title>L'évaluation paresseuse</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="lib/reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="escale.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'lib/reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="lib/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">L'évaluation paresseuse</h1>
+    <h2 class="author">(ou comment faire les choses plus tard peut être une bonne idée)</h2>
+    <h3 class="date">David Sferruzza</h3>
+</section>
+
+<section id="à-propos-de-moi" class="slide level1">
+<h1>À propos de moi</h1>
+<ul>
+<li><a href="https://twitter.com/d_sferruzza">@d_sferruzza</a></li>
+<li><a href="https://github.com/dsferruzza">github.com/dsferruzza</a></li>
+<li>développeur et responsable R&amp;D chez <a href="http://www.escaledigitale.com">Escale</a></li>
+<li>doctorant en génie logiciel à l'Université de Nantes</li>
+<li>écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 2 an</li>
+</ul>
+<div style="text-align:center">
+<img src="img/escale.png" alt="">
+</div>
+</section>
+<section id="évaluation-paresseuse" class="slide level1">
+<h1>Évaluation paresseuse !=</h1>
+<div style="text-align:center">
+<img src="img/stairs.gif" alt="" width="800">
+</div>
+<p>Learn the difference, it could save your life</p>
+</section>
+<section id="stratégie-dévaluation" class="slide level1">
+<h1>Stratégie d'évaluation</h1>
+<ul>
+<li><strong>quand</strong> évaluer les arguments d'un appel de fonction</li>
+<li><strong>quel type de valeur</strong> passer à la fonction</li>
+</ul>
+<div style="text-align:center">
+<img src="img/bean.gif" alt="" width="600">
+</div>
+</section>
+<section id="évaluation-stricte" class="slide level1">
+<h1>Évaluation stricte</h1>
+<p><em>strict evaluation, eager evaluation, greedy evaluation</em></p>
+<ul>
+<li><strong>quand :</strong> dès que l'expression peut être liée à une variable</li>
+<li><strong>quel type de valeurs :</strong>
+<ul>
+<li><em>call by value</em></li>
+<li><em>call by reference</em></li>
+<li><em>call by sharing</em></li>
+<li>...</li>
+</ul></li>
+</ul>
+</section>
+<section id="évaluation-non-stricte" class="slide level1">
+<h1>Évaluation non stricte</h1>
+<p><em>non-strict evaluation, lazy evaluation</em></p>
+<ul>
+<li><strong>call by name :</strong> les arguments sont substitués dans le corps de la fonction</li>
+<li><strong>call by need :</strong> idem, avec <em>mémoïsation</em> (≈ mise en cache du résultat de l'évaluation des arguments)</li>
+<li>...</li>
+</ul>
+</section>
+<section id="évaluation-paresseuse-1" class="slide level1">
+<h1>Évaluation paresseuse</h1>
+<p>L'exécution d'un bout de code ne se fait pas avant que les résultats de ce bout de code ne soient réellement nécessaires.</p>
+<div style="text-align:center">
+<img src="img/clean.gif" alt="" width="515">
+</div>
+</section>
+<section id="à-quoi-ça-sert" class="slide level1">
+<h1>À quoi ça sert ?</h1>
+<ul>
+<li><strong>optimisation :</strong> on peut éviter des calculs inutiles</li>
+<li><strong>maintenabilité :</strong>
+<ul>
+<li>on peut exprimer des structures de données infinies</li>
+<li>on peut définir des structures de contrôle comme des abstractions, au lieu de primitives</li>
+</ul></li>
+</ul>
+</section>
+<section id="lo-dash" class="slide level1">
+<h1>Lo-Dash</h1>
+<blockquote>
+<p>A JavaScript utility library delivering consistency, modularity, performance, &amp; extras.</p>
+</blockquote>
+<div style="text-align:center">
+<a href="https://lodash.com/">https://lodash.com/</a>
+</div>
+<ul>
+<li>bibliothèque JS qui permet (notamment) de manipuler les collections</li>
+<li><em>lazy</em> depuis la v3</li>
+</ul>
+</section>
+<section id="exemple" class="slide level1">
+<h1>Exemple</h1>
+<pre class="javascript"><code>var t = [0, 1, 2, 3, 4];
+
+function plusUn(nb) {
+    console.log(nb + &#39; + 1&#39;);
+    if (nb &gt; 2) console.log(&#39;Traitement long&#39;);
+    return nb + 1;
+}
+
+function petit(nb) {
+    console.log(nb + &#39; plus petit que 3 ?&#39;);
+    return nb &lt; 3;
+}</code></pre>
+</section>
+<section id="sans-lo-dash" class="slide level1">
+<h1>Sans Lo-Dash</h1>
+<div style="float: right; margin-right: 100px;">
+<pre class="javascript"><code>var js = t
+        .map(plusUn)
+        .filter(petit)
+        .slice(0, 2);</code></pre>
+</div>
+<pre><code>0 + 1
+1 + 1
+2 + 1
+3 + 1
+Traitement long
+4 + 1
+Traitement long
+1 plus petit que 3 ?
+2 plus petit que 3 ?
+3 plus petit que 3 ?
+4 plus petit que 3 ?
+5 plus petit que 3 ?
+[ 1, 2 ]</code></pre>
+</section>
+<section id="sans-lo-dash-1" class="slide level1">
+<h1>Sans Lo-Dash</h1>
+<div style="text-align:center">
+<img src="img/without-lodash.gif" alt="" width="690">
+</div>
+</section>
+<section id="avec-lo-dash" class="slide level1">
+<h1>Avec Lo-Dash</h1>
+<pre class="javascript"><code>var _ = require(&#39;lodash&#39;);
+var lodash = _(t)
+        .map(plusUn)
+        .filter(petit)
+        .take(2)
+        .value();</code></pre>
+<pre><code>0 + 1
+1 plus petit que 3 ?
+1 + 1
+2 plus petit que 3 ?
+[ 1, 2 ]</code></pre>
+</section>
+<section id="avec-lo-dash-1" class="slide level1">
+<h1>Avec Lo-Dash</h1>
+<div style="text-align:center">
+<img src="img/with-lodash.gif" alt="" width="690">
+</div>
+</section>
+<section id="conclusion" class="slide level1">
+<h1>Conclusion</h1>
+<div style="text-align:center">
+<img src="img/cat.gif" alt="" width="800">
+</div>
+<p>Still not that kind of lazy</p>
+</section>
+<section id="conclusion-1" class="slide level1">
+<h1>Conclusion</h1>
+<ul>
+<li>séparation
+<ul>
+<li>du Calcul, de la <strong>génération</strong><br><em>→ où le calcul d'une valeur est-il défini ?</em></li>
+<li>du Contrôle, de la <strong>condition d'arrêt</strong><br><em>→ où le calcul d'une valeur se produit-il ?</em></li>
+</ul></li>
+<li><em>colle</em> qui permet d'assembler efficacement des (bouts de) programmes : facilite l'approche <em>diviser pour régner</em></li>
+</ul>
+<p><strong>Avantages :</strong> peut augmenter la maintenabilité <em>et</em> les performances</p>
+<p><strong>Inconvénients :</strong> peut introduire de l'<em>overhead</em> (dépend pas mal de la techno)</p>
+</section>
+<section id="ressources" class="slide level1">
+<h1>Ressources</h1>
+<ul>
+<li><a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a> : pourquoi les fonctions d'ordre supérieur et l'évaluation paresseuse sont parmi les meilleurs outils pour écrire des programmes modulaires</li>
+<li><a href="http://www.infoq.com/interviews/john-hughes-fp">John Hughes on Why Functional Programming Matters!</a></li>
+<li><a href="https://lodash.com/">Lo-Dash</a></li>
+<li><a href="http://filimanjaro.com/blog/2014/introducing-lazy-evaluation/">How to Speed Up Lo-Dash ×100? Introducing Lazy Evaluation</a> : annonce/exemple de l'évaluation paresseuse dans Lo-Dash</li>
+<li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy">Evaluation strategy sur Wikipédia</a> : explications détaillées des stratégies d'évaluation les plus courantes</li>
+</ul>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions ?</h1>
+<div style="text-align:center">
+<img src="img/fat.gif" />
+</div>
+<div style="text-align:center">
+<p>Twitter : @d_sferruzza</p>
+<p>Slides sur GitHub :</p>
+<a href="http://github.com/dsferruzza/talk-evaluation-paresseuse-en-js">dsferruzza/talk-evaluation-paresseuse-en-js</a>
+</div>
+</section>
+    </div>
+  </div>
+
+
+  <script src="lib/reveal.js/lib/js/head.min.js"></script>
+  <script src="lib/reveal.js/js/reveal.js"></script>
+
+  <script>
+      // Dirty hack to remove slide IDs (because french accents break URLs)
+      var slides = document.querySelectorAll('.slides > section');
+      for (var i = 0; i < slides.length; ++i) {
+        slides[i].removeAttribute('id');
+      }
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: true,                // Display the page number of the current slide
+        theme: 'escale', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'lib/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'lib/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'lib/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          //{ src: 'lib/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+          //{ src: 'lib/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]});
+    </script>
+    </body>
+</html>
