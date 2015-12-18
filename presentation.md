@@ -8,7 +8,7 @@
 - [github.com/dsferruzza](https://github.com/dsferruzza)
 - développeur et responsable R&D chez [Escale](http://www.escaledigitale.com)
 - doctorant en génie logiciel à l'Université de Nantes
-- écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 2 an
+- écrit des projets perso et pro en Scala et en Haskell (notamment) depuis ~ 2 ans
 
 ![](img/escale.png)
 
